@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-import css from './css/toast.css';
+import "./css/inlinecss";
 
 import Snap from 'snapsvg';
 // class DialogCustom extends React.Component {
@@ -59,8 +59,8 @@ const Message = (props) => {
     setTimeout(() => {
         props.onClose();
     }, 3000);
-    return (<div className={css.react_toast_mask + ' ' + css.block}>
-        <div className={css.react_toast_message}>
+    return (<div className="react_toast_mask block">
+        <div className="react_toast_message">
             <span>{props.tips}</span>
         </div>
     </div>)
@@ -82,7 +82,7 @@ const LoadAnimation = () => {
 
         path.animate({ d: 'M5 50,A45 45 0 0 1 95 50A 45 45 0 0 1 5 50', }, 5e2, mina.easeout(), function () {
             // console.log('animation end');
-            progress.addClass(css.rotate)
+            progress.addClass("rotate")
             progress.animate({
                 opacity: 1
             }, 200, mina.easeout(), function () {
@@ -121,7 +121,7 @@ const LoadAnimation = () => {
             opacity: 0
         }, 200, mina.easeout(), function () {
             // console.log('animation end');
-            progress.removeClass(css.rotate)
+            progress.removeClass("rotate")
         });
     }
     const over = () => {
@@ -137,8 +137,8 @@ const LoadAnimation = () => {
 
 const Loading = (props) => {
     const { text } = props;
-    return <div className={`${css.react_toast_mask} ${css.react_toast_mask_loading} ${text != '' && css.active}`}>
-        <div className={css.react_toast_message}>
+    return <div className={`react_toast_mask react_toast_mask_loading ${text != '' &&"active"}`}>
+        <div className="react_toast_message">
             <svg version="1.1"
                 baseProfile="full"
                 width="36" height="36"
