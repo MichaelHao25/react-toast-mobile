@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-import './src/css/toast.css';
+import css from './css/toast.css';
 
-
-
+import Snap from 'snapsvg';
 // class DialogCustom extends React.Component {
 //     static show = params => {
 //       let container = document.createElement("div");
@@ -29,82 +28,64 @@ import './src/css/toast.css';
 
 let svg, path, progress, timerId, load, success, fail;
 
-export default class ToastContainer extends React.Component {
-    // static toast = tips => {
-    //     let container = document.createElement("div");
-    //     document.body.appendChild(container);
+// ToastContainer.prototype.toast = tips => {
+//     let container = document.createElement("div");
+//     document.body.appendChild(container);
 
-    //     function closeHandle() {
-    //         ReactDOM.unmountComponentAtNode(container);
-    //         document.body.removeChild(container);
-    //         container = null;
-    //     }
+//     function closeHandle() {
+//         ReactDOM.unmountComponentAtNode(container);
+//         document.body.removeChild(container);
+//         container = null;
+//     }
 
-    //     ReactDOM.render(<Message tips={tips} onClose={closeHandle} />, container);
-    // };
-    // static load = tips => {
-    //     load(tips);
-    // }
-    // static success = tips => {
-    //     success(tips);
-    // }
-    // static fail = tips => {
-    //     fail(tips);
-    // }
-}
-ToastContainer.prototype.toast = tips => {
-    let container = document.createElement("div");
-    document.body.appendChild(container);
+//     ReactDOM.render(<Message tips={tips} onClose={closeHandle} />, container);
+// };
+// ToastContainer.prototype.load = tips => {
+//     load(tips);
+// }
+// ToastContainer.prototype.success = tips => {
+//     success(tips);
+// }
+// ToastContainer.prototype.fail = tips => {
+//     fail(tips);
+// }
 
-    function closeHandle() {
-        ReactDOM.unmountComponentAtNode(container);
-        document.body.removeChild(container);
-        container = null;
-    }
+// const Item = props => {
+//     // 
+//     return <div></div>
+// }
 
-    ReactDOM.render(<Message tips={tips} onClose={closeHandle} />, container);
-};
-ToastContainer.prototype.load = tips => {
-    load(tips);
-}
-ToastContainer.prototype.success = tips => {
-    success(tips);
-}
-ToastContainer.prototype.fail = tips => {
-    fail(tips);
-}
 const Message = (props) => {
     setTimeout(() => {
         props.onClose();
     }, 3000);
-    return <Item value={props.tips} />
-}
-const Item = (props) => {
-    return <div className={`react-toast-mask block`}>
-        <div className="react-toast-message">
-            <span>{props.value}</span>
+    return (<div className={css.react_toast_mask + ' ' + css.block}>
+        <div className={css.react_toast_message}>
+            <span>{props.tips}</span>
         </div>
-    </div>
+    </div>)
 }
+
 
 //不能直接加载成功!
 //不能加载成功后在加载失败!
 const LoadAnimation = () => {
     const [text, setText] = useState('');
     useEffect(() => {
-        svg = window.Snap('#svg');
+        svg = Snap('#svg');
         path = svg.select('.animation');
         progress = svg.select('.progress');
     }, [])
     load = (tips) => {
         let value = tips ? tips : '正在加载中...';
         setText(value);
-        path.animate({ d: 'M5 50,A45 45 0 0 1 95 50A 45 45 0 0 1 5 50', }, 5e2, window.mina.easeout(), function () {
+
+        path.animate({ d: 'M5 50,A45 45 0 0 1 95 50A 45 45 0 0 1 5 50', }, 5e2, mina.easeout(), function () {
             // console.log('animation end');
-            progress.addClass('rotate')
+            progress.addClass(css.rotate)
             progress.animate({
                 opacity: 1
-            }, 200, window.mina.easeout(), function () {
+            }, 200, mina.easeout(), function () {
                 // console.log('animation end');
             });
         });
@@ -116,7 +97,7 @@ const LoadAnimation = () => {
         clearTimeout(timerId);
         let value = tips ? tips : '加载成功!';
         setText(value);
-        path.animate({ d: 'M22 50 L 40 67,77 31' }, 5e2, window.mina.easeout(), function () {
+        path.animate({ d: 'M22 50 L 40 67,77 31' }, 5e2, mina.easeout(), function () {
             // console.log('animation end');
             over();
         });
@@ -129,7 +110,7 @@ const LoadAnimation = () => {
         clearTimeout(timerId);
         let value = tips ? tips : '加载失败!';
         setText(value);
-        path.animate({ d: 'M30 30 L 70 70,M 30 70,L 70 30' }, 5e2, window.mina.easeout(), function () {
+        path.animate({ d: 'M30 30 L 70 70,M 30 70,L 70 30' }, 5e2, mina.easeout(), function () {
             // console.log('animation end');
             over();
         });
@@ -138,8 +119,9 @@ const LoadAnimation = () => {
     const done = () => {
         progress.animate({
             opacity: 0
-        }, 200, window.mina.easeout(), function () {
+        }, 200, mina.easeout(), function () {
             // console.log('animation end');
+            progress.removeClass(css.rotate)
         });
     }
     const over = () => {
@@ -155,8 +137,8 @@ const LoadAnimation = () => {
 
 const Loading = (props) => {
     const { text } = props;
-    return <div className={`react-toast-mask react-toast-mask-loading ${text != '' && 'active'}`}>
-        <div className="react-toast-message">
+    return <div className={`${css.react_toast_mask} ${css.react_toast_mask_loading} ${text != '' && css.active}`}>
+        <div className={css.react_toast_message}>
             <svg version="1.1"
                 baseProfile="full"
                 width="36" height="36"
@@ -165,8 +147,8 @@ const Loading = (props) => {
                 id="svg"
             >
                 <g>
-                    <path className="animation" d="M5 50,A45 45 0 0 1 95 50A 45 45 0 0 1 5 50" stroke='#fff' fill='transparent' strokeWidth="6"></path>
-                    <path className="progress" stroke="#108ee9" fill="transparent" strokeWidth="6" strokeLinecap="round" d="M5 50A 45 45 0 0 1 50 5"></path>
+                    <path className={'animation'} d="M5 50,A45 45 0 0 1 95 50A 45 45 0 0 1 5 50" stroke='#fff' fill='transparent' strokeWidth="6"></path>
+                    <path className={'progress'} stroke="#108ee9" fill="transparent" strokeWidth="6" strokeLinecap="round" d="M5 50A 45 45 0 0 1 50 5"></path>
                 </g>
             </svg>
             <span>{text}</span>
@@ -184,4 +166,31 @@ if (!document.getElementById("react_toast_loading_wuc45qr044pdjqxgckxsnkzl4rucwt
     div.setAttribute('id', 'react_toast_loading_wuc45qr044pdjqxgckxsnkzl4rucwt');
     document.body.appendChild(div);
     ReactDOM.render(<App />, div);
+}
+
+
+
+
+export default class ToastContainer extends React.Component {
+    static toast = tips => {
+        let container = document.createElement("div");
+        document.body.appendChild(container);
+
+        function closeHandle() {
+            ReactDOM.unmountComponentAtNode(container);
+            document.body.removeChild(container);
+            container = null;
+        }
+
+        ReactDOM.render(<Message tips={tips} onClose={closeHandle} />, container);
+    };
+    static load = tips => {
+        load(tips);
+    }
+    static success = tips => {
+        success(tips);
+    }
+    static fail = tips => {
+        fail(tips);
+    }
 }

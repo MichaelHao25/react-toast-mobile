@@ -1,4 +1,4 @@
-.react-toast-mask {
+.react_toast_mask {
     position: fixed;
     top: 40%;
     left: 50%;
@@ -8,16 +8,16 @@
     display: none;
 }
 
-.react-toast-mask.active {
+.react_toast_mask.active {
     display: block;
     animation: fadeIn 0.8s linear;
 }
 
-.react-toast-mask.block {
+.react_toast_mask.block {
     display: block;
 }
 
-.react-toast-message {
+.react_toast_message {
     min-width: 95px;
     line-height: 1.5;
     padding: 10px 12px;
@@ -31,7 +31,7 @@
     flex-direction: column;
 }
 
-.react-toast-message span {
+.react_toast_message span {
     text-align: justify;
     word-break: break-all;
     font-size: 16px;
@@ -39,21 +39,21 @@
 }
 
 
-.react-toast-mask-loading .react-toast-message {
+.react_toast_mask_loading .react_toast_message {
     background-color: rgba(0, 0, 0, 0.7);
     padding: 15px;
 }
 
-.react-toast-mask-loading .react-toast-message span {
+.react_toast_mask_loading .react_toast_message span {
     font-size: 14px;
 }
 
-svg {
+.react_toast_mask svg {
     display: block;
     margin: 0 auto;
 }
 
-svg+span {
+.react_toast_mask svg+span {
     padding-top: 10px;
     display: block;
 }
@@ -80,42 +80,5 @@ svg+span {
 
     to {
         opacity: 1;
-    }
-}
-
-
-.light-toast-message.icon {
-    padding: 15px;
-    border-radius: 5px;
-}
-
-.light-toast-icon-wrapper {
-    margin: 0 auto 10px;
-    width: 36px;
-    height: 36px;
-}
-
-.light-toast-loading {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    border: 2px solid #ccc;
-    border-left-color: #108ee9;
-    border-radius: 50%;
-    -webkit-animation: loading 1s ease infinite;
-    animation: loading 1s ease infinite;
-}
-
-@-webkit-keyframes loading {
-    100% {
-        -webkit-transform: rotate(360deg);
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes loading {
-    100% {
-        -webkit-transform: rotate(360deg);
-        transform: rotate(360deg);
     }
 }

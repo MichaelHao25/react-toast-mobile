@@ -1,4 +1,4 @@
 {
-    "presets": ["react","es2015"],
-    "plugins": ["transform-react-jsx"]
+    "presets": ["@babel/preset-react"],
+    "plugins": ["@babel/plugin-proposal-class-properties"]
 }
