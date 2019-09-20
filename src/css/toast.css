@@ -1,0 +1,121 @@
+.react-toast-mask {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1999;
+    max-width: 80%;
+    display: none;
+}
+
+.react-toast-mask.active {
+    display: block;
+    animation: fadeIn 0.8s linear;
+}
+
+.react-toast-mask.block {
+    display: block;
+}
+
+.react-toast-message {
+    min-width: 95px;
+    line-height: 1.5;
+    padding: 10px 12px;
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.86);
+    border-radius: 6px;
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.react-toast-message span {
+    text-align: justify;
+    word-break: break-all;
+    font-size: 16px;
+    color: #fff;
+}
+
+
+.react-toast-mask-loading .react-toast-message {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+}
+
+.react-toast-mask-loading .react-toast-message span {
+    font-size: 14px;
+}
+
+svg {
+    display: block;
+    margin: 0 auto;
+}
+
+svg+span {
+    padding-top: 10px;
+    display: block;
+}
+
+.rotate {
+    animation: rotate 1s infinite linear;
+    transform-origin: center center;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotateZ(0);
+    }
+
+    to {
+        transform: rotateZ(360deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+.light-toast-message.icon {
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.light-toast-icon-wrapper {
+    margin: 0 auto 10px;
+    width: 36px;
+    height: 36px;
+}
+
+.light-toast-loading {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #ccc;
+    border-left-color: #108ee9;
+    border-radius: 50%;
+    -webkit-animation: loading 1s ease infinite;
+    animation: loading 1s ease infinite;
+}
+
+@-webkit-keyframes loading {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes loading {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
