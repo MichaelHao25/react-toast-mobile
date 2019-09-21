@@ -4,13 +4,12 @@
 
 找了npm库找toast发现适合手机的很少,有几个适合手机的都有一些大大小小的问题没有修复或者是动画太死板,一点都不符合现代化,所以自己做了一个react-toast
 
-![demo](https://github.com/MichaelHao25/react-toast-mobile/blob/master/example/demo.gif?raw=true)
 
-![demo](/example/demo.gif?raw=true)
+<!-- ![demo](/example/demo.gif?raw=true) -->
 
-![demo](./example/demo.gif?raw=true)
+<!-- ![demo](./example/demo.gif?raw=true) -->
 
-![demo](/example/demo.gif?raw=true)
+![demo](example/demo.gif?raw=true)
 
 可以自行下载demo演示查看
 
