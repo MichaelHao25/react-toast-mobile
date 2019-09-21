@@ -4,7 +4,7 @@
 
 找了npm库找toast发现适合手机的很少,有几个适合手机的都有一些大大小小的问题没有修复或者是动画太死板,一点都不符合现代化,所以自己做了一个react-toast
 
-![avatar](/example/demo.gif)
+![avatar](example/demo.gif)
 
 可以自行下载demo演示查看
 
