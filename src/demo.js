@@ -13,4 +13,8 @@ const App = () => {
         </>
     )
 }
-ReactDOM.render(<App />, document.getElementById('root'));
+
+let div = document.createElement('div');
+div.setAttribute('id', 'root');
+document.body.appendChild(div);
+ReactDOM.render(<App />, div);

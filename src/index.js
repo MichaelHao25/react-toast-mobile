@@ -1,66 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-import "./css/inlinecss";
+import css from './css/toast.css';
 
 import Snap from 'snapsvg';
-// class DialogCustom extends React.Component {
-//     static show = params => {
-//       let container = document.createElement("div");
-//       document.body.appendChild(container);
-
-//       function closeHandle() {
-//         ReactDOM.unmountComponentAtNode(container);
-//         document.body.removeChild(container);
-//         container = null;
-//       }
-
-//       ReactDOM.render(<DialogCustom {...params} onClose={closeHandle} />, container);
-//     };
-
-//     ...
-
-//     render() {
-//       return (<Modal  ... visible={true}>...</Modal>);
-//     }
-// }
-//使用静态方法来改造弹窗组件   
-
 
 let svg, path, progress, timerId, load, success, fail;
-
-// ToastContainer.prototype.toast = tips => {
-//     let container = document.createElement("div");
-//     document.body.appendChild(container);
-
-//     function closeHandle() {
-//         ReactDOM.unmountComponentAtNode(container);
-//         document.body.removeChild(container);
-//         container = null;
-//     }
-
-//     ReactDOM.render(<Message tips={tips} onClose={closeHandle} />, container);
-// };
-// ToastContainer.prototype.load = tips => {
-//     load(tips);
-// }
-// ToastContainer.prototype.success = tips => {
-//     success(tips);
-// }
-// ToastContainer.prototype.fail = tips => {
-//     fail(tips);
-// }
-
-// const Item = props => {
-//     // 
-//     return <div></div>
-// }
 
 const Message = (props) => {
     setTimeout(() => {
         props.onClose();
     }, 3000);
-    return (<div className="react_toast_mask block">
-        <div className="react_toast_message">
+    return (<div className={css.react_toast_mask + ' ' + css.block}>
+        <div className={css.react_toast_message}>
             <span>{props.tips}</span>
         </div>
     </div>)
@@ -82,7 +33,7 @@ const LoadAnimation = () => {
 
         path.animate({ d: 'M5 50,A45 45 0 0 1 95 50A 45 45 0 0 1 5 50', }, 5e2, mina.easeout(), function () {
             // console.log('animation end');
-            progress.addClass("rotate")
+            progress.addClass(css.rotate)
             progress.animate({
                 opacity: 1
             }, 200, mina.easeout(), function () {
@@ -121,7 +72,7 @@ const LoadAnimation = () => {
             opacity: 0
         }, 200, mina.easeout(), function () {
             // console.log('animation end');
-            progress.removeClass("rotate")
+            progress.removeClass(css.rotate)
         });
     }
     const over = () => {
@@ -137,8 +88,8 @@ const LoadAnimation = () => {
 
 const Loading = (props) => {
     const { text } = props;
-    return <div className={`react_toast_mask react_toast_mask_loading ${text != '' &&"active"}`}>
-        <div className="react_toast_message">
+    return <div className={`${css.react_toast_mask} ${css.react_toast_mask_loading} ${text != '' && css.active}`}>
+        <div className={css.react_toast_message}>
             <svg version="1.1"
                 baseProfile="full"
                 width="36" height="36"

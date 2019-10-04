@@ -1,18 +1,13 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 module.exports = {
-    entry: './src/index.js',
-    // mode: 'production',
-    // development
-    mode:'production',
+    entry: './src/demo.js',
+    mode: 'development',
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
-        libraryTarget: 'commonjs2'
-    },
-    externals: {
-        react: 'react',//打包时候排除react
-        'react-dom': 'react-dom'
     },
     module: {
         rules: [
@@ -44,9 +39,23 @@ module.exports = {
             },
         ]
     },
+    devtool: 'inline-source-map',
+    plugins: [
+        new CleanWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            title: 'Development',
+        })
+    ],
     resolve: {
         alias: {
             snapsvg: 'snapsvg/dist/snap.svg.js',
         },
+    },
+    devServer: {                  // 启动本地开发的node服务器环境（webpack-dev-server）
+        port: 8080,                 // 端口
+        contentBase: './dist',      // 开发环境的服务目录
+        historyApiFallback: true,
+        inline: true,
+        hot: true,
     },
 };
