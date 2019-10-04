@@ -25,6 +25,6 @@ Toast.toast('xxx')
 注意一定要先load后才可以成功或者失败!
 Toast.toast随便使用.
 参考的bilibili的
-~~由于使用了snap.svg 所以需要在引入一下snap.svg ~~
+~~由于使用了snap.svg 所以需要在引入一下snap.svg~~
 
 使用react16.0+的hook特性,
